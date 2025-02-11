@@ -1,0 +1,16 @@
+services:
+  meme:
+    container_name: meme
+    image: meme_image
+    runtime: nvidia
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+    volumes:
+      - .:/app
+    stdin_open: true
+    tty: true
